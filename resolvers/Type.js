@@ -1,5 +1,5 @@
 const { GraphQLScalarType } = require('graphql')
-const { ObjectID } = require('mongodb')
+const { ObjectId } = require('mongodb')
 
 module.exports = {
     
@@ -42,7 +42,7 @@ module.exports = {
             
             const photoIDs = tags
                 .filter(t => t.githubLogin === parent.githubLogin)
-                .map(t => ObjectID(t.photoID))
+                .map(t => ObjectId(t.photoID))
 
             return db.collection('photos')
                 .find({ _id: { $in: photoIDs }})
